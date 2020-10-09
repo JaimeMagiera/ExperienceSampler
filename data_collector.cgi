@@ -9,7 +9,7 @@ print "You are participant $id!";
 
 # Create outfile for saving data!
 my $filename = "participant_".$id."_data.csv";
-open( OUTFILE, ">>", $filename) or die $!, "Couldn\'t open outfile for reading!\n";
+open( OUTFILE, ">>", $filename) or die $!, "Couldn\'t open outfile for writing!\n";
 
 my @keys = $query->param();
 print OUTFILE 'pause_time'."\t".$query->param('pause_time')."\n";
