@@ -1,6 +1,7 @@
 #!/usr/bin/perl -ws                                                                       
 use CGI;
 
+my $datadir =  $ENV{'DATA_DIR'};
 my $query = CGI->new;
 my $id = $query->param( 'participant_id' );
 
@@ -9,7 +10,8 @@ print "You are participant $id!";
 
 # Create outfile for saving data!
 my $filename = "participant_".$id."_data.csv";
-open( OUTFILE, ">>", $filename) or die $!, "Couldn\'t open outfile for writing!\n";
+my $filepath = $datadir . "/" . $filename
+open( OUTFILE, ">>", $filepath) or die $!, "Couldn\'t open outfile for writing!\n";
 
 my @keys = $query->param();
 print OUTFILE 'pause_time'."\t".$query->param('pause_time')."\n";
